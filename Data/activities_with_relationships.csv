@@ -1,0 +1,9 @@
+Activity_ID,Activity_Name,Duration_Days,Predecessors
+B1000,Employer's and Contractor Camp Mitlung,30,
+B1010,Labor Camp at Surge Shaft,25,
+B1020,Employer's and Contractor Camp Tapethok,30,
+B1030,Batching Plant 60m3/hr. at Mitlung,15,B1000
+B1040,Crusher Plant 120TPH at Mitlung,20,B1000[SS]
+B1050,Batching Plant No-1 (60m3/hr).at Tapethok,15,B1020
+B1060,Batching Plant No-2 (120m3/hr).at Tapethok,15,B1050[FS+2d]
+B1070,Crusher Plant (100TPH)at Tapethok,20,"B1020[SS], B1060[FF-5d]"

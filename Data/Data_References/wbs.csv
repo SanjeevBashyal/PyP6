@@ -1,0 +1,11 @@
+WBS Short Name,WBS Name,Parent WBS Name
+1,Project Management Office,Manpower Mobilization
+1,TBM Department,Project Management Office
+2,Civil Construction Department,Project Management Office
+3,Plant Department,Project Management Office
+4,HSE Department,Project Management Office
+5,Quality Assurance/Quality Control Department,Project Management Office
+6,Procurement Department,Project Management Office
+7,Technical Department,Project Management Office
+8,"Admin, Finance & HR Department",Project Management Office
+9,Survey Department,Project Management Office

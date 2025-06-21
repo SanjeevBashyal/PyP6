@@ -1,0 +1,9 @@
+Role_Name,Role_Short_Name,Parent_Role_Name
+Project Management,PM,
+Engineering,ENG,
+Civil Works,CIVIL,Engineering
+Mechanical,MECH,Engineering
+Electrical,ELEC,Engineering
+Construction,CONST,
+Foreman,FRMN,Construction
+Laborer,LABR,Construction
