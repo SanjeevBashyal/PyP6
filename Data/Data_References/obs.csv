@@ -1,12 +1,11 @@
 OBS_Name,Parent_OBS_Name
-Tamor Energy,
-PMC,Tamor Energy
-Construction Department,PMC
-Civil Department,PMC
-Plant Department,PMC
-HSE Department,PMC
-Quality Assurance Department,PMC
-Procurement Department, PMC
-Technical Department, PMC
-Admin/Finance/HR Department, PMC
-Survey Department, PMC
+Project Management Office,Tamor Energy
+TBM Department,Project Management Office
+"Dam, Powerhouse-Surge Shaft & Other Component Construction Department",Project Management Office
+Plant Department,Project Management Office
+HSE Department,Project Management Office
+Quality Assurance/Quality Control Department,Project Management Office
+Procurement Department,Project Management Office
+Technical Department,Project Management Office
+"Admin, Finance & HR Department",Project Management Office
+Survy Department,Project Management Office
