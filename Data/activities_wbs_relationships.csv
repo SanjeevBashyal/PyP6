@@ -1,0 +1,76 @@
+Activity_ID,Activity_Name,Duration_Days,WBS_Name,Predecessors
+GN-2000,Project Manager,1200,Project Management Office,
+GN-2001,Deputy Project Manager,1170,Project Management Office,
+GN-2002,Project Coordinator,1350,Project Management Office,
+GN-2003,Assistant PD Project Controler - 1,1200,Project Management Office,GN-2000[SS]
+GN-2100,TBM Tunnel Engineer,1050,TBM Department,
+GN-2101,QA/QC Engineer Casting Yard,1050,TBM Department,GN-2100[SS]
+GN-2200,Construction Manager,1170,Civil Construction Department,
+GN-2201,Deputy Construction Manager-1 Powerhouse,1350,Civil Construction Department,
+GN-2202,Deputy Construction Manager-2 Dam,1200,Civil Construction Department,
+GN-2203,Deputy Construction Manager-3 Surge Shaft & Other Component,1170,Civil Construction Department,GN-2200[SS]
+GN-2204,RCC Dam Engineer - 1,1170,Civil Construction Department,GN-2203[SS]
+GN-2205,RCC Dam Engineer - 2,1170,Civil Construction Department,GN-2204[SS]
+GN-2206,Underground Engineer,1350,Civil Construction Department,GN-2201[SS]
+GN-2207,Drill & Blast Engineer - 1,1350,Civil Construction Department,GN-2206[SS]
+GN-2208,Drill & Blast Engineer - 2,1350,Civil Construction Department,GN-2207[SS]
+GN-2209,Tunnel Engineer - 1,1350,Civil Construction Department,GN-2208[SS]
+GN-2210,Tunnel Engineer - 2,1170,Civil Construction Department,GN-2205[SS]
+GN-2211,Rebar Fabrication Yard Supervisor,1170,Civil Construction Department,GN-2210[SS]
+GN-2212,Foreman Rebar - 2,1170,Civil Construction Department,GN-2211[SS]
+GN-2213,Foreman Formwork - 1,1170,Civil Construction Department,GN-2212[SS]
+GN-2214,Foreman Formwork - 2,1170,Civil Construction Department,GN-2213[SS]
+GN-2215,Foreman Concrete - 1,1170,Civil Construction Department,GN-2214[SS]
+GN-2216,Foreman Concrete - 2,1170,Civil Construction Department,GN-2215[SS]
+GN-2217,Excavation Foreman - 1,1170,Civil Construction Department,GN-2216[SS]
+GN-2218,Excavation Foreman - 2,1170,Civil Construction Department,GN-2217[SS]
+GN-2219,Rock Support Foreman - 1,1170,Civil Construction Department,GN-2218[SS]
+GN-2220,Rock Support Foreman - 2,1170,Civil Construction Department,GN-2219[SS]
+GN-2221,Drill & Blast Engineer - 3,1170,Civil Construction Department,GN-2220[SS]
+GN-2222,Drill & Blast Engineer - 4,1170,Civil Construction Department,GN-2221[SS]
+GN-2300,Plant Manager,1200,Plant Department,
+GN-2301,Mechanical Engineer,1350,Plant Department,
+GN-2302,Electrical Engineer,1170,Plant Department,
+GN-2303,Sr. Mechanic - 1,1170,Plant Department,GN-2302[SS]
+GN-2304,Sr. Mechanic - 2,1350,Plant Department,GN-2301[SS]
+GN-2305,Electrical Foreman - 2,1170,Plant Department,GN-2303[SS]
+GN-2306,Electrical Foreman - 2,1170,Plant Department,GN-2305[SS]
+GN-2400,HSE Manager,1170,HSE Department,
+GN-2401,Environmental Engineer,1170,HSE Department,GN-2400[SS]
+GN-2402,Safety Officer - 1,1350,HSE Department,
+GN-2403,Safety Officer - 2,1170,HSE Department,GN-2401[SS]
+GN-2500,QA/QC Manager,1170,Quality Assurance/Quality Control Department,
+GN-2501,QA/QC Engineer,1170,Quality Assurance/Quality Control Department,GN-2500[SS]
+GN-2502,Material Engineer,1170,Quality Assurance/Quality Control Department,GN-2501[SS]
+GN-2503,Lab-Technician - 1,1170,Quality Assurance/Quality Control Department,GN-2502[SS]
+GN-2504,Lab-Technician - 2,1170,Quality Assurance/Quality Control Department,GN-2503[SS]
+GN-2600,Procurement Manager,1350,Procurement Department,
+GN-2601,Procurement Officer,1350,Procurement Department,GN-2600[SS]
+GN-2602,Logistics,1350,Procurement Department,GN-2601[SS]
+GN-2603,Logistics,1350,Procurement Department,GN-2602[SS]
+GN-2604,Store Incharg,1200,Procurement Department,
+GN-2700,Chief Technical Engineer,1215,Technical Department,
+GN-2701,Technical Engineer,1215,Technical Department,GN-2700[SS]
+GN-2702,Geologist Engineer,1350,Technical Department,
+GN-2703,Geologist Engineer,1170,Technical Department,
+GN-2704,Sr. Planning Engineer,1170,Technical Department,GN-2703[SS]
+GN-2705,Structure Engineer,1170,Technical Department,GN-2704[SS]
+GN-2706,Method Statement Engineer,1170,Technical Department,GN-2705[SS]
+GN-2707,Instrument Engineer,1170,Technical Department,GN-2706[SS]
+GN-2708,Quantity Survey/Billing Engineer,1170,Technical Department,GN-2707[SS]
+GN-2709,Draftman - 1,1170,Technical Department,GN-2708[SS]
+GN-2800,"Admin, Finance & HR Manager",1170,"Admin, Finance & HR Department",
+GN-2801,Admin Excrutive,1350,"Admin, Finance & HR Department",
+GN-2802,Acountant Excrutive,1350,"Admin, Finance & HR Department",GN-2801[SS]
+GN-2803,Acountant Excrutive,1350,"Admin, Finance & HR Department",GN-2802[SS]
+GN-2804,HR Excrutive,1350,"Admin, Finance & HR Department",GN-2803[SS]
+GN-2805,IT Engineer,1170,"Admin, Finance & HR Department",GN-2800[SS]
+GN-2806,Document Control - 2,1170,"Admin, Finance & HR Department",GN-2805[SS]
+GN-2900,Chief Survey Manager,1350,Survey Department,
+GN-2901,Survey Supperintendent,1350,Survey Department,GN-2900[SS]
+GN-2902,Survey (Team 1),1350,Survey Department,GN-2901[SS]
+GN-2903,Asst Survey (Team 1),1350,Survey Department,GN-2902[SS]
+GN-2904,Survey (Team 2),1170,Survey Department,
+GN-2905,Asst Survey (Team 2),1170,Survey Department,GN-2904[SS]
+GN-2906,Survey (Team 3),1170,Survey Department,GN-2905[SS]
+GN-2907,Asst Survey (Team 3),1170,Survey Department,GN-2906[SS]

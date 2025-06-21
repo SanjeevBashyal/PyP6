@@ -29,17 +29,17 @@ def get_project_defaults(cursor, project_short_name):
     # Step 2: Find the root WBS for this project in the PROJWBS table.
     # The root WBS node is identified by having proj_node_flag = 'Y'.
     # Its wbs_short_name will also match the project_short_name.
-    wbs_query = "SELECT wbs_id FROM PROJWBS WHERE proj_id = ? AND proj_node_flag = 'Y'"
+    wbs_query = "SELECT wbs_id, obs_id FROM PROJWBS WHERE proj_id = ? AND proj_node_flag = 'Y'"
     cursor.execute(wbs_query, (proj_id,))
     wbs_result = cursor.fetchone()
 
     if not wbs_result:
         raise ValueError(f"Could not find the root WBS node for project '{project_short_name}' (proj_id: {proj_id}). The database may be inconsistent or the project setup is incomplete.")
         
-    root_wbs_id = wbs_result[0]
+    root_wbs_id, project_obs_id = wbs_result
     print(f"Found Root WBS ID: {root_wbs_id}")
     
-    return proj_id, root_wbs_id, clndr_id
+    return proj_id, root_wbs_id, clndr_id, project_obs_id
 
 
 def generate_guid():

@@ -1,24 +1,22 @@
-# --- START OF FILE add_obs.py ---
+# --- START OF FILE obs.py ---
 
 import sqlite3
 import sys
 import pandas as pd
 from datetime import datetime
-import time
-
-from access_p6 import get_next_id, generate_guid
 
 # Import shared settings and functions
 import config as cfg
 from access_db import connect_to_db
+from access_p6 import generate_guid, get_next_id
 
-def get_or_create_obs_id(cursor, obs_name, parent_obs_name, cache):
+def get_or_create_obs_id(cursor, index, obs_name, parent_obs_name, cache):
     """
-    Finds an OBS element by name or creates it if it doesn't exist.
-    Uses recursion to ensure the parent is created first and a cache to avoid redundant lookups.
+    Finds an OBS element by name or creates it if it doesn't exist,
+    now including a programmatically generated sequence number.
     """
     if pd.isna(obs_name) or not obs_name:
-        return None # Handles empty or NaN parent names
+        return None  # Handles empty or NaN parent names
 
     # 1. Check cache first to avoid DB calls
     if obs_name in cache:
@@ -29,33 +27,44 @@ def get_or_create_obs_id(cursor, obs_name, parent_obs_name, cache):
     result = cursor.fetchone()
     if result:
         obs_id = result[0]
-        cache[obs_name] = obs_id # Store in cache for future use
+        cache[obs_name] = obs_id
         print(f"Found existing OBS: '{obs_name}' (ID: {obs_id})")
         return obs_id
 
     # 3. If it doesn't exist, we must create it. First, get the parent's ID.
     print(f"OBS element '{obs_name}' not found. Attempting to create.")
-    parent_obs_id = get_or_create_obs_id(cursor, parent_obs_name, None, cache)
+    # The parent doesn't need an index since we are creating it recursively.
+    # Pass a placeholder index like -1.
+    parent_obs_id = get_or_create_obs_id(cursor, -1, parent_obs_name, None, cache)
 
-    # 4. Insert the new OBS element
+    # 4. Insert the new OBS element with the sequence number
     try:
+        # MODIFIED: Added seq_num to the INSERT statement
         sql_insert = """
-            INSERT INTO OBS (obs_id, parent_obs_id, obs_name, guid, create_date, create_user, update_date, update_user)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO OBS (obs_id, parent_obs_id, seq_num, obs_name, guid, 
+                             create_date, create_user, update_date, update_user)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
         new_obs_id = get_next_id(cursor, 'OBS', 'obs_id')
         current_time = datetime.now()
         guid = generate_guid()
+        # NEW: Generate sequence number from the CSV row index
+        seq_num = (index + 1) * 10
 
-        cursor.execute(sql_insert, (new_obs_id, parent_obs_id, obs_name, guid, current_time, cfg.USER_NAME, current_time, cfg.USER_NAME))
+        # MODIFIED: Added seq_num to the data tuple
+        obs_data = (
+            new_obs_id, parent_obs_id, seq_num, obs_name, guid,
+            current_time, cfg.USER_NAME, current_time, cfg.USER_NAME
+        )
+        cursor.execute(sql_insert, obs_data)
 
         cache[obs_name] = new_obs_id
-        print(f"  -> Successfully created OBS: '{obs_name}' with ID: {new_obs_id}")
+        print(f"  -> Successfully created OBS: '{obs_name}' with ID: {new_obs_id} and Seq Num: {seq_num}")
         return new_obs_id
 
     except sqlite3.Error as e:
         print(f"ERROR: Failed to insert OBS element '{obs_name}'. {e}")
-        raise # Raise exception to trigger a transaction rollback
+        raise  # Raise exception to trigger a transaction rollback
 
 def main():
     """Main function to read CSV and populate the OBS table."""
@@ -73,13 +82,13 @@ def main():
 
     conn = connect_to_db(cfg.P6_PRO_DB_PATH)
     cursor = conn.cursor()
-    obs_cache = {} # Cache to store OBS Name -> obs_id
+    obs_cache = {}  # Cache to store OBS Name -> obs_id
 
     try:
         print("\n--- Processing OBS Hierarchy ---")
+        # The 'index' from iterrows() is now used to generate the sequence number
         for index, row in df.iterrows():
-            # This loop ensures every item in the CSV is processed and created if needed
-            get_or_create_obs_id(cursor, row['OBS_Name'], row['Parent_OBS_Name'], obs_cache)
+            get_or_create_obs_id(cursor, index, row['OBS_Name'], row['Parent_OBS_Name'], obs_cache)
 
         conn.commit()
         print("\nSUCCESS: OBS hierarchy changes have been committed to the database.")
@@ -95,4 +104,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-# --- END OF FILE add_obs.py ---
+# --- END OF FILE obs.py ---

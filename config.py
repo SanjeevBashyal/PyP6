@@ -17,6 +17,7 @@ ACT_FILE_PATH = DATA_PATH / 'activities.csv'
 OBS_FILE_PATH = DATA_PATH / 'obs.csv'
 WBS_FILE_PATH = DATA_PATH / 'wbs.csv'
 ROLES_FILE_PATH = DATA_PATH / 'roles.csv'
+ACTIVITIES_WBS_REL_FILE_PATH = DATA_PATH / 'activities_wbs_relationships.csv'
 
 
 # --- P6 Project ---
