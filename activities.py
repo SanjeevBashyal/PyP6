@@ -1,4 +1,4 @@
-# --- START OF FILE activities_wbs_relationships.py ---
+# --- START OF FILE activities.py ---
 
 import sqlite3
 import sys
@@ -11,6 +11,8 @@ import re
 import config as cfg
 from access_db import connect_to_db
 from access_p6 import get_project_defaults, generate_guid, get_next_id
+
+# --- Helper Functions ---
 
 
 def build_wbs_cache(cursor, proj_id):
@@ -28,6 +30,23 @@ def build_wbs_cache(cursor, proj_id):
         )
     print(f"  -> WBS cache built successfully with {len(wbs_cache)} entries.")
     return wbs_cache
+
+
+def build_task_code_map(cursor, proj_id):
+    """
+    Queries ALL existing activities in the project and returns a dictionary
+    mapping their task_code to their internal task_id. This allows linking to
+    pre-existing activities not in the current CSV.
+    """
+    print("Building cache of existing activities from the database...")
+    task_map = {}
+    query = "SELECT task_code, task_id FROM TASK WHERE proj_id = ?"
+    cursor.execute(query, (proj_id,))
+    results = cursor.fetchall()
+    for task_code, task_id in results:
+        task_map[task_code] = task_id
+    print(f"  -> Activity cache built successfully with {len(task_map)} entries.")
+    return task_map
 
 
 def parse_relationship(relationship_str):
@@ -57,10 +76,11 @@ def parse_relationship(relationship_str):
     return pred_activity_id, "PR_" + pred_type, lag_hours
 
 
+# --- Main Execution ---
+
+
 def main():
     """Main function to read CSV and add activities under specific WBS with relationships."""
-
-    # 1. Read and validate CSV
     try:
         df = pd.read_csv(cfg.ACT_FILE_PATH).fillna("")
         required_cols = [
@@ -82,22 +102,24 @@ def main():
         print(f"ERROR: CSV format is incorrect. {e}")
         sys.exit(1)
 
-    # 2. Connect to DB and set up
     conn = connect_to_db(cfg.P6_PRO_DB_PATH)
     cursor = conn.cursor()
-    activity_id_to_task_id = {}
 
     try:
-        # 3. Get project defaults and build WBS cache
+        # 1. Get project defaults and build caches
         proj_id, root_wbs_id, clndr_id, _ = get_project_defaults(
             cursor, cfg.TARGET_PROJECT_ID
         )
         wbs_name_cache = build_wbs_cache(cursor, proj_id)
 
+        # --- KEY CHANGE: PRE-LOAD ALL EXISTING ACTIVITIES ---
+        activity_id_to_task_id = build_task_code_map(cursor, proj_id)
+
+        # 2. Get next available IDs
         next_task_id = get_next_id(cursor, "TASK", "task_id")
         next_task_pred_id = get_next_id(cursor, "TASKPRED", "task_pred_id")
 
-        # --- PASS 1: INSERT ACTIVITIES ---
+        # --- PASS 1: INSERT NEW ACTIVITIES ---
         print("\n--- Pass 1: Inserting Activities ---")
         current_time = datetime.now()
         sql_insert_task = """
@@ -109,49 +131,26 @@ def main():
 
         for index, row in df.iterrows():
             task_code = row["Activity_ID"]
-            wbs_name = str(
-                row["WBS_Name"]
-            ).strip()  # Ensure it's a string and remove whitespace
+            wbs_name = str(row["WBS_Name"]).strip()
 
-            # --- LOGIC FOR OPTIONAL WBS_NAME ---
-            # Default to the project's root WBS ID
             wbs_id = root_wbs_id
-
-            if wbs_name:  # If a WBS Name is provided...
-                wbs_id = wbs_name_cache.get(
-                    wbs_name
-                )  # ...try to get its ID from the cache.
+            if wbs_name:
+                wbs_id = wbs_name_cache.get(wbs_name)
                 if not wbs_id:
-                    # If it's not found in the cache, raise an error.
                     raise ValueError(
-                        f"WBS Name '{wbs_name}' for Activity '{task_code}' not found in the project's WBS structure. Please check your CSV or run the WBS import script."
+                        f"WBS Name '{wbs_name}' for Activity '{task_code}' not found in the project's WBS structure."
                     )
-                print(f"Processing Activity: {task_code} (under WBS: '{wbs_name}')")
-            else:  # If WBS Name is empty...
-                # ...the wbs_id remains the root_wbs_id.
-                print(f"Processing Activity: {task_code} (under project root WBS)")
-            # --- END OF OPTIONAL WBS_NAME LOGIC ---
 
+            # The check now works against the pre-loaded map of ALL activities.
             if task_code in activity_id_to_task_id:
                 print(
-                    f"  -> WARNING: Duplicate Activity ID '{task_code}' in CSV. Skipping."
+                    f"  -> INFO: Activity code '{task_code}' already exists in DB or is a duplicate in the CSV. Skipping creation."
                 )
                 continue
 
-            cursor.execute(
-                "SELECT task_id FROM TASK WHERE proj_id = ? AND task_code = ?",
-                (proj_id, task_code),
+            print(
+                f"Processing Activity: {task_code} (under WBS: '{wbs_name or 'Project Root'}')"
             )
-            if cursor.fetchone():
-                print(
-                    f"  -> WARNING: Activity code '{task_code}' already exists in DB. Skipping insertion, but mapping for relationships."
-                )
-                cursor.execute(
-                    "SELECT task_id FROM TASK WHERE proj_id = ? AND task_code = ?",
-                    (proj_id, task_code),
-                )
-                activity_id_to_task_id[task_code] = cursor.fetchone()[0]
-                continue
 
             duration_hours = row["Duration_Days"] * cfg.HOURS_PER_DAY
             task_data = (
@@ -175,12 +174,14 @@ def main():
                 cfg.USER_NAME,
             )
             cursor.execute(sql_insert_task, task_data)
+
+            # Add the NEWLY created activity to our map for Pass 2.
             activity_id_to_task_id[task_code] = next_task_id
             print(f"  -> Queued for insertion with Task ID: {next_task_id}")
             next_task_id += 1
 
         # --- PASS 2: INSERT RELATIONSHIPS ---
-        # The logic to handle empty predecessors was already robust, but I've added comments to clarify.
+        # No changes are needed here. The activity_id_to_task_id map is now comprehensive.
         print("\n--- Pass 2: Inserting Relationships ---")
         sql_insert_pred = """
             INSERT INTO TASKPRED (task_pred_id, task_id, pred_task_id, proj_id, pred_proj_id,
@@ -189,13 +190,13 @@ def main():
         """
         for index, row in df.iterrows():
             successor_code = row["Activity_ID"]
-            # This check correctly handles empty strings, NaN, etc.
             predecessors_str = str(row["Predecessors"]).strip()
             if not predecessors_str:
-                continue  # If the predecessor string is empty, skip this row entirely for Pass 2.
+                continue
 
             successor_task_id = activity_id_to_task_id.get(successor_code)
             if not successor_task_id:
+                # This can happen if the successor was a duplicate and skipped in Pass 1.
                 continue
 
             print(f"Processing relationships for: {successor_code}")
@@ -203,10 +204,12 @@ def main():
             for pred_str in predecessor_list:
                 try:
                     pred_code, pred_type, lag_hours = parse_relationship(pred_str)
+
+                    # This lookup now works for pre-existing AND newly created activities.
                     predecessor_task_id = activity_id_to_task_id.get(pred_code)
                     if not predecessor_task_id:
                         print(
-                            f"  -> ERROR: Predecessor '{pred_code}' for '{successor_code}' not found. Skipping link."
+                            f"  -> ERROR: Predecessor activity '{pred_code}' for '{successor_code}' not found in the DB or CSV. Skipping this link."
                         )
                         continue
 
@@ -248,5 +251,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# --- END OF FILE activities_wbs_relationships.py ---

@@ -1,11 +1,15 @@
 WBS Short Name,WBS Name,Parent WBS Name
-IFC-DRW,IFC Drawings,
-IFC-LOT2I,"IFC Drawings - Headworks (LOT 2-I)",IFC Drawings
-IFC-LOT2III,"IFC Drawings - Penstock & Surge (LOT 2-III)",IFC Drawings
-IFC-LOT2IV,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC Drawings
-IFC-LOT2V,"IFC Drawings - Access & Tailrace Tunnels (LOT 2-V)",IFC Drawings
-IFC-LOT3,"IFC Drawings - Hydromechanical Works",IFC Drawings
-IFC-LOT4,"IFC Drawings - Electromechanical Works",IFC Drawings
-IFC-LOT5,"IFC Drawings - Transmission Line (LOT 5)",IFC Drawings
-
+PMC-PH1,Phase I: Pre-Construction Phase,Project Management and Monitoring
+PMC-PH2,"Phase II: Construction, Supervision, and Commissioning Phase",Project Management and Monitoring
+PMC-PH3,Phase III: Post-Construction Phase,Project Management and Monitoring
+PMC-1-1,Project Inception and Planning,Phase I: Pre-Construction Phase
+PMC-1-2,Detailed Engineering Design Review & Value Engineering,Phase I: Pre-Construction Phase
+PMC-1-3,Tendering and Contract Award Assistance,Phase I: Pre-Construction Phase
+PMC-2-1,Construction Supervision and Management,"Phase II: Construction, Supervision, and Commissioning Phase"
+PMC-2-2,Quality Assurance and Quality Control (QA/QC),"Phase II: Construction, Supervision, and Commissioning Phase"
+PMC-2-3,"Contract, Cost, and Claims Management","Phase II: Construction, Supervision, and Commissioning Phase"
+PMC-2-4,HSE and Social Management,"Phase II: Construction, Supervision, and Commissioning Phase"
+PMC-2-5,"Testing, Commissioning, and Handover","Phase II: Construction, Supervision, and Commissioning Phase"
+PMC-3-1,Defects Liability Period (DLP) Management,Phase III: Post-Construction Phase
+PMC-3-2,Project Close-out and Final Documentation,Phase III: Post-Construction Phase
 
