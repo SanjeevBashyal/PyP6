@@ -1,0 +1,9 @@
+Activity_ID,Activity_Name,Duration_Days,WBS_Name,Predecessors
+GN-1010,Letter of Acceptance,1,General/Contractual
+GN-1020,Submission of Performance Bank Gurantee,14,General/Contractual
+GN-1030,Signing of Contract Agreement,7,General/Contractual
+GN-1040,Access/Possession of site,1,General/Contractual
+GN-1050,Interim Arrangement of the Design consultant,14,General/Contractual
+GN-1060,Release of Moblization Advance 1st Part,10,General/Contractual
+GN-1070,Release of Moblization Advance 2nd Part,10,General/Contractual
+GN-1100,Notice to Commence,1,General/Contractual,GN-2000[SS]

@@ -1,76 +1,41 @@
 Activity_ID,Activity_Name,Duration_Days,WBS_Name,Predecessors
-GN-2000,Project Manager,1200,Project Management Office,
-GN-2001,Deputy Project Manager,1170,Project Management Office,
-GN-2002,Project Coordinator,1350,Project Management Office,
-GN-2003,Assistant PD Project Controler - 1,1200,Project Management Office,GN-2000[SS]
-GN-2100,TBM Tunnel Engineer,1050,TBM Department,
-GN-2101,QA/QC Engineer Casting Yard,1050,TBM Department,GN-2100[SS]
-GN-2200,Construction Manager,1170,Civil Construction Department,
-GN-2201,Deputy Construction Manager-1 Powerhouse,1350,Civil Construction Department,
-GN-2202,Deputy Construction Manager-2 Dam,1200,Civil Construction Department,
-GN-2203,Deputy Construction Manager-3 Surge Shaft & Other Component,1170,Civil Construction Department,GN-2200[SS]
-GN-2204,RCC Dam Engineer - 1,1170,Civil Construction Department,GN-2203[SS]
-GN-2205,RCC Dam Engineer - 2,1170,Civil Construction Department,GN-2204[SS]
-GN-2206,Underground Engineer,1350,Civil Construction Department,GN-2201[SS]
-GN-2207,Drill & Blast Engineer - 1,1350,Civil Construction Department,GN-2206[SS]
-GN-2208,Drill & Blast Engineer - 2,1350,Civil Construction Department,GN-2207[SS]
-GN-2209,Tunnel Engineer - 1,1350,Civil Construction Department,GN-2208[SS]
-GN-2210,Tunnel Engineer - 2,1170,Civil Construction Department,GN-2205[SS]
-GN-2211,Rebar Fabrication Yard Supervisor,1170,Civil Construction Department,GN-2210[SS]
-GN-2212,Foreman Rebar - 2,1170,Civil Construction Department,GN-2211[SS]
-GN-2213,Foreman Formwork - 1,1170,Civil Construction Department,GN-2212[SS]
-GN-2214,Foreman Formwork - 2,1170,Civil Construction Department,GN-2213[SS]
-GN-2215,Foreman Concrete - 1,1170,Civil Construction Department,GN-2214[SS]
-GN-2216,Foreman Concrete - 2,1170,Civil Construction Department,GN-2215[SS]
-GN-2217,Excavation Foreman - 1,1170,Civil Construction Department,GN-2216[SS]
-GN-2218,Excavation Foreman - 2,1170,Civil Construction Department,GN-2217[SS]
-GN-2219,Rock Support Foreman - 1,1170,Civil Construction Department,GN-2218[SS]
-GN-2220,Rock Support Foreman - 2,1170,Civil Construction Department,GN-2219[SS]
-GN-2221,Drill & Blast Engineer - 3,1170,Civil Construction Department,GN-2220[SS]
-GN-2222,Drill & Blast Engineer - 4,1170,Civil Construction Department,GN-2221[SS]
-GN-2300,Plant Manager,1200,Plant Department,
-GN-2301,Mechanical Engineer,1350,Plant Department,
-GN-2302,Electrical Engineer,1170,Plant Department,
-GN-2303,Sr. Mechanic - 1,1170,Plant Department,GN-2302[SS]
-GN-2304,Sr. Mechanic - 2,1350,Plant Department,GN-2301[SS]
-GN-2305,Electrical Foreman - 2,1170,Plant Department,GN-2303[SS]
-GN-2306,Electrical Foreman - 2,1170,Plant Department,GN-2305[SS]
-GN-2400,HSE Manager,1170,HSE Department,
-GN-2401,Environmental Engineer,1170,HSE Department,GN-2400[SS]
-GN-2402,Safety Officer - 1,1350,HSE Department,
-GN-2403,Safety Officer - 2,1170,HSE Department,GN-2401[SS]
-GN-2500,QA/QC Manager,1170,Quality Assurance/Quality Control Department,
-GN-2501,QA/QC Engineer,1170,Quality Assurance/Quality Control Department,GN-2500[SS]
-GN-2502,Material Engineer,1170,Quality Assurance/Quality Control Department,GN-2501[SS]
-GN-2503,Lab-Technician - 1,1170,Quality Assurance/Quality Control Department,GN-2502[SS]
-GN-2504,Lab-Technician - 2,1170,Quality Assurance/Quality Control Department,GN-2503[SS]
-GN-2600,Procurement Manager,1350,Procurement Department,
-GN-2601,Procurement Officer,1350,Procurement Department,GN-2600[SS]
-GN-2602,Logistics,1350,Procurement Department,GN-2601[SS]
-GN-2603,Logistics,1350,Procurement Department,GN-2602[SS]
-GN-2604,Store Incharg,1200,Procurement Department,
-GN-2700,Chief Technical Engineer,1215,Technical Department,
-GN-2701,Technical Engineer,1215,Technical Department,GN-2700[SS]
-GN-2702,Geologist Engineer,1350,Technical Department,
-GN-2703,Geologist Engineer,1170,Technical Department,
-GN-2704,Sr. Planning Engineer,1170,Technical Department,GN-2703[SS]
-GN-2705,Structure Engineer,1170,Technical Department,GN-2704[SS]
-GN-2706,Method Statement Engineer,1170,Technical Department,GN-2705[SS]
-GN-2707,Instrument Engineer,1170,Technical Department,GN-2706[SS]
-GN-2708,Quantity Survey/Billing Engineer,1170,Technical Department,GN-2707[SS]
-GN-2709,Draftman - 1,1170,Technical Department,GN-2708[SS]
-GN-2800,"Admin, Finance & HR Manager",1170,"Admin, Finance & HR Department",
-GN-2801,Admin Excrutive,1350,"Admin, Finance & HR Department",
-GN-2802,Acountant Excrutive,1350,"Admin, Finance & HR Department",GN-2801[SS]
-GN-2803,Acountant Excrutive,1350,"Admin, Finance & HR Department",GN-2802[SS]
-GN-2804,HR Excrutive,1350,"Admin, Finance & HR Department",GN-2803[SS]
-GN-2805,IT Engineer,1170,"Admin, Finance & HR Department",GN-2800[SS]
-GN-2806,Document Control - 2,1170,"Admin, Finance & HR Department",GN-2805[SS]
-GN-2900,Chief Survey Manager,1350,Survey Department,
-GN-2901,Survey Supperintendent,1350,Survey Department,GN-2900[SS]
-GN-2902,Survey (Team 1),1350,Survey Department,GN-2901[SS]
-GN-2903,Asst Survey (Team 1),1350,Survey Department,GN-2902[SS]
-GN-2904,Survey (Team 2),1170,Survey Department,
-GN-2905,Asst Survey (Team 2),1170,Survey Department,GN-2904[SS]
-GN-2906,Survey (Team 3),1170,Survey Department,GN-2905[SS]
-GN-2907,Asst Survey (Team 3),1170,Survey Department,GN-2906[SS]
+IFC-2501,Issuance of IFC for Transmission Line (Foundations & Access),0,"IFC Drawings - Transmission Line (LOT 5)",
+IFC-2502,Issuance of IFC for Transmission Line (Tower & Stringing Details),0,"IFC Drawings - Transmission Line (LOT 5)",IFC-2501[FS+90d]
+IFC-4201,Issuance of IFC for Tailrace Tunnel (Portal & Excavation Support),0,"IFC Drawings - Access & Tailrace Tunnels (LOT 2-V)",
+IFC-4211,Issuance of IFC for Main Access Tunnel (Portal & Excavation Support),0,"IFC Drawings - Access & Tailrace Tunnels (LOT 2-V)",
+IFC-4202,Issuance of IFC for Tailrace Tunnel (Concrete Lining & Outlet Works),0,"IFC Drawings - Access & Tailrace Tunnels (LOT 2-V)",IFC-4201[FS+240d]
+IFC-4212,Issuance of IFC for Main Access Tunnel (Final Lining & Pavement),0,"IFC Drawings - Access & Tailrace Tunnels (LOT 2-V)",IFC-4211[FS+300d]
+IFC-3101,Issuance of IFC for Ventilation Tunnel (Excavation & Support),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-4211[FS+60d]
+IFC-3501,Issuance of IFC for Access Tunnel to Penstock (Excavation & Support),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-4211[FS+90d]
+IFC-3201,Issuance of IFC for Powerhouse Cavern (Excavation & Primary Support),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3101[FS+30d]
+IFC-3301,Issuance of IFC for Transformer Cavern (Excavation & Primary Support),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3201[SS+30d]
+IFC-3202,Issuance of IFC for Powerhouse Cavern (Crane Beam & Arch Concrete),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3201[FS+120d]
+IFC-3302,Issuance of IFC for Transformer Cavern (Structural Concrete),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3301[FS+150d]
+IFC-3203,Issuance of IFC for Powerhouse Cavern (Substructure & Draft Tube Concrete),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3202[FS+90d]
+IFC-3401,Issuance of IFC for Cable Tunnel (Excavation & Lining),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3302[FS]
+IFC-3601,Issuance of IFC for Drainage Gallery (Excavation & Lining),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3401[FS+30d]
+IFC-3701,Issuance of IFC for Escape Tunnel (Excavation & Lining),0,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC-3601[FS+90d]
+IFC-2101,Issuance of IFC for Cofferdam & River Diversion Works,0,"IFC Drawings - Headworks (LOT 2-I)",
+IFC-2102,Issuance of IFC for Barrage & Undersluice (Foundation & Micro-piling),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2101[FS+30d]
+IFC-2104,Issuance of IFC for Intake & Gravel Trap (Excavation & Foundation),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2102[FS]
+IFC-2106,Issuance of IFC for Left Bank Flood Walls (All Sections),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2102[FS]
+IFC-2103,Issuance of IFC for Barrage & Undersluice (Structural Concrete),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2102[FS+120d]
+IFC-2105,Issuance of IFC for Intake & Gravel Trap (Structural Concrete),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2104[FS+90d]
+IFC-2107,Issuance of IFC for Approach Culvert & Settling Basin (Excavation & Foundation),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2105[FS]
+IFC-2108,Issuance of IFC for Approach Culvert & Settling Basin (Structural Concrete),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2107[FS+150d]
+IFC-2109,Issuance of IFC for Energy Dissipator,0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2108[FS+60d]
+IFC-2110,Issuance of IFC for Headpond & CFRD (Excavation & Embankment),0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2109[FS]
+IFC-2111,Issuance of IFC for Headpond Lining & Bypass Pipe,0,"IFC Drawings - Headworks (LOT 2-I)",IFC-2110[FS+150d]
+IFC-2201,Issuance of IFC for Surge Shaft (Excavation & Support),0,"IFC Drawings - Penstock & Surge (LOT 2-III)",
+IFC-2211,Issuance of IFC for Vertical Pressure Shaft (Excavation & Support),0,"IFC Drawings - Penstock & Surge (LOT 2-III)",IFC-2201[FS]
+IFC-2221,Issuance of IFC for Horizontal Penstock Shaft (Excavation & Support),0,"IFC Drawings - Penstock & Surge (LOT 2-III)",IFC-3501[FS+210d]
+IFC-2202,Issuance of IFC for Surge Shaft (Concrete Lining),0,"IFC Drawings - Penstock & Surge (LOT 2-III)",IFC-2201[FS+240d]
+IFC-2212,Issuance of IFC for Vertical Pressure Shaft (Steel Liner & Concrete),0,"IFC Drawings - Penstock & Surge (LOT 2-III)",IFC-2211[FS+300d]
+IFC-2222,Issuance of IFC for Horizontal Penstock Shaft (Steel Liner & Concrete),0,"IFC Drawings - Penstock & Surge (LOT 2-III)",IFC-2221[FS+45d]
+IFC-5101,Approval of HM Design for Intake & Undersluice Gates,0,"IFC Drawings - Hydromechanical Works",
+IFC-5102,Approval of HM Design for Settling Basin & Headpond Gates,0,"IFC Drawings - Hydromechanical Works",IFC-5101[FS+90d]
+IFC-5201,Approval of HM Design for Penstock Pipes & Manifolds,0,"IFC Drawings - Hydromechanical Works",IFC-5102[FS+60d]
+IFC-6002,Approval of EM Design for Powerhouse Cranes,0,"IFC Drawings - Electromechanical Works",
+IFC-6001,Approval of EM Design for Turbine & Generator,0,"IFC Drawings - Electromechanical Works",IFC-6002[FS+30d]
+IFC-6003,Approval of EM Design for Transformers & Switchgear,0,"IFC Drawings - Electromechanical Works",IFC-6001[FS+30d]
+IFC-6004,Approval of EM Design for Balance of Plant (BOP),0,"IFC Drawings - Electromechanical Works",IFC-6003[FS+30d]

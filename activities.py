@@ -62,7 +62,7 @@ def main():
 
     # 1. Read and validate CSV
     try:
-        df = pd.read_csv(cfg.ACTIVITIES_WBS_REL_FILE_PATH).fillna("")
+        df = pd.read_csv(cfg.ACT_FILE_PATH).fillna("")
         required_cols = [
             "Activity_ID",
             "Activity_Name",
@@ -74,9 +74,9 @@ def main():
             raise ValueError(
                 f"CSV must contain the columns: {', '.join(required_cols)}"
             )
-        print(f"Read {len(df)} records from '{cfg.ACTIVITIES_WBS_REL_FILE_PATH}'.")
+        print(f"Read {len(df)} records from '{cfg.ACT_FILE_PATH}'.")
     except FileNotFoundError:
-        print(f"ERROR: The file '{cfg.ACTIVITIES_WBS_REL_FILE_PATH}' was not found.")
+        print(f"ERROR: The file '{cfg.ACT_FILE_PATH}' was not found.")
         sys.exit(1)
     except ValueError as e:
         print(f"ERROR: CSV format is incorrect. {e}")

@@ -1,12 +1,11 @@
 WBS Short Name,WBS Name,Parent WBS Name
-1,Project Management Office,Human Resources
-1,TBM Department,Project Management Office
-2,Civil Construction Department,Project Management Office
-3,Plant Department,Project Management Office
-4,HSE Department,Project Management Office
-5,Quality Assurance/Quality Control Department,Project Management Office
-6,Procurement Department,Project Management Office
-7,Technical Department,Project Management Office
-8,"Admin, Finance & HR Department",Project Management Office
-9,Survey Department,Project Management Office
+IFC-DRW,IFC Drawings,
+IFC-LOT2I,"IFC Drawings - Headworks (LOT 2-I)",IFC Drawings
+IFC-LOT2III,"IFC Drawings - Penstock & Surge (LOT 2-III)",IFC Drawings
+IFC-LOT2IV,"IFC Drawings - Powerhouse & Auxiliary (LOT 2-IV)",IFC Drawings
+IFC-LOT2V,"IFC Drawings - Access & Tailrace Tunnels (LOT 2-V)",IFC Drawings
+IFC-LOT3,"IFC Drawings - Hydromechanical Works",IFC Drawings
+IFC-LOT4,"IFC Drawings - Electromechanical Works",IFC Drawings
+IFC-LOT5,"IFC Drawings - Transmission Line (LOT 5)",IFC Drawings
+
 
