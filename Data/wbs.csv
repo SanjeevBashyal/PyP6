@@ -1,15 +1,11 @@
 WBS Short Name,WBS Name,Parent WBS Name
-PMC-PH1,Phase I: Pre-Construction Phase,Project Management and Monitoring
-PMC-PH2,"Phase II: Construction, Supervision, and Commissioning Phase",Project Management and Monitoring
-PMC-PH3,Phase III: Post-Construction Phase,Project Management and Monitoring
-PMC-1-1,Project Inception and Planning,Phase I: Pre-Construction Phase
-PMC-1-2,Detailed Engineering Design Review & Value Engineering,Phase I: Pre-Construction Phase
-PMC-1-3,Tendering and Contract Award Assistance,Phase I: Pre-Construction Phase
-PMC-2-1,Construction Supervision and Management,"Phase II: Construction, Supervision, and Commissioning Phase"
-PMC-2-2,Quality Assurance and Quality Control (QA/QC),"Phase II: Construction, Supervision, and Commissioning Phase"
-PMC-2-3,"Contract, Cost, and Claims Management","Phase II: Construction, Supervision, and Commissioning Phase"
-PMC-2-4,HSE and Social Management,"Phase II: Construction, Supervision, and Commissioning Phase"
-PMC-2-5,"Testing, Commissioning, and Handover","Phase II: Construction, Supervision, and Commissioning Phase"
-PMC-3-1,Defects Liability Period (DLP) Management,Phase III: Post-Construction Phase
-PMC-3-2,Project Close-out and Final Documentation,Phase III: Post-Construction Phase
-
+1,Pre-Commissioning and Dry Testing,Testing & Commissioning
+2,Wet Commissioning and System Tests,Testing & Commissioning
+3,Unit Commissioning,Testing & Commissioning
+1,Unit 1 Commissioning,Unit Commissioning
+2,Unit 2 Commissioning,Unit Commissioning
+3,Unit 3 Commissioning,Unit Commissioning
+4,Unit 4 Commissioning,Unit Commissioning
+5,Unit 5 Commissioning,Unit Commissioning
+4,Integrated Plant Performance & Reliability Test,Testing & Commissioning
+5,Final Documentation and Handover,Testing & Commissioning

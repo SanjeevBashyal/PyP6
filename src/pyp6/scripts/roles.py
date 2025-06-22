@@ -7,8 +7,8 @@ from datetime import datetime
 import time
 
 # Import shared settings and functions
-import config as cfg
-from access_db import connect_to_db
+from pyp6 import config as cfg
+from pyp6.access_db import connect_to_db
 
 def generate_guid():
     """Generates a simple, unique-enough string for the GUID field."""

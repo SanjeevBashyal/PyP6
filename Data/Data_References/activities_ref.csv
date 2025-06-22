@@ -1,9 +1,21 @@
 Activity_ID,Activity_Name,Duration_Days,WBS_Name,Predecessors
-GN-1010,Letter of Acceptance,1,General/Contractual
-GN-1020,Submission of Performance Bank Gurantee,14,General/Contractual
-GN-1030,Signing of Contract Agreement,7,General/Contractual
-GN-1040,Access/Possession of site,1,General/Contractual
-GN-1050,Interim Arrangement of the Design consultant,14,General/Contractual
-GN-1060,Release of Moblization Advance 1st Part,10,General/Contractual
-GN-1070,Release of Moblization Advance 2nd Part,10,General/Contractual
-GN-1100,Notice to Commence,1,General/Contractual,GN-2000[SS]
+TC-8101,"Dry Loop Checks & Verification (Instrumentation, Control, Protection)",10,Pre-Commissioning and Dry Testing,
+TC-8102,"Mechanical Cold Commissioning (Alignment, Rotational Checks, Lubrication)",10,Pre-Commissioning and Dry Testing,
+TC-8201,First Filling and Pressurization of Penstock and Waterways,5,Wet Commissioning and System Tests,"TC-8101[FS], TC-8102[FS]"
+TC-8202,Leakage and Pressure Tests of Waterways and Valves,5,Wet Commissioning and System Tests,TC-8201[FS]
+TC-8311,Unit 1 First Spin and No-Load Run,2,Unit 1 Commissioning,TC-8202[FS]
+TC-8312,Unit 1 Synchronization to Grid,1,Unit 1 Commissioning,TC-8311[FS]
+TC-8313,Unit 1 Load Rejection and Performance Tests,5,Unit 1 Commissioning,TC-8312[FS]
+TC-8314,Unit 1 Reliability Run (72 hours),3,Unit 1 Commissioning,TC-8313[FS]
+TC-8321,Unit 2 First Spin and No-Load Run,2,Unit 2 Commissioning,TC-8313[FS]
+TC-8322,Unit 2 Synchronization to Grid,1,Unit 2 Commissioning,TC-8321[FS]
+TC-8323,Unit 2 Load Rejection and Performance Tests,5,Unit 2 Commissioning,TC-8322[FS]
+TC-8324,Unit 2 Reliability Run (72 hours),3,Unit 2 Commissioning,TC-8323[FS]
+TC-8331,Unit 3 First Spin and No-Load Run,2,Unit 3 Commissioning,TC-8323[FS]
+TC-8332,Unit 3 Synchronization to Grid,1,Unit 3 Commissioning,TC-8331[FS]
+TC-8333,Unit 3 Load Rejection and Performance Tests,5,Unit 3 Commissioning,TC-8332[FS]
+TC-8334,Unit 3 Reliability Run (72 hours),3,Unit 3 Commissioning,TC-8333[FS]
+TC-8401,Integrated Plant Reliability Test (All Units at Full Load),7,Integrated Plant Performance & Reliability Test,TC-8334[FS]
+TC-8402,"Environmental Monitoring (Noise, Vibration, Water Quality) during Operation",15,Integrated Plant Performance & Reliability Test,TC-8311[SS]
+TC-8501,Compilation of Test Records and Commissioning Dossier,60,Final Documentation and Handover,TC-8101[SS]
+TC-8502,Final Performance Acceptance Test (PAT) and Punch List Rectification,10,Final Documentation and Handover,TC-8401[FS]

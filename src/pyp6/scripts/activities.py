@@ -8,9 +8,9 @@ import time
 import re
 
 # Import shared settings and functions
-import config as cfg
-from access_db import connect_to_db
-from access_p6 import get_project_defaults, generate_guid, get_next_id
+from pyp6 import config as cfg
+from pyp6.access_db import connect_to_db
+from pyp6.access_p6 import get_project_defaults, generate_guid, get_next_id
 
 # --- Helper Functions ---
 

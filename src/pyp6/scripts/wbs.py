@@ -6,9 +6,9 @@ import pandas as pd
 from datetime import datetime
 
 # Import shared settings and functions
-import config as cfg
-from access_db import connect_to_db
-from access_p6 import generate_guid, get_next_id, get_project_defaults
+from pyp6 import config as cfg
+from pyp6.access_db import connect_to_db
+from pyp6.access_p6 import generate_guid, get_next_id, get_project_defaults
 
 def get_or_create_wbs_id(cursor, proj_id, root_wbs_id, row, index, default_obs_id, wbs_cache):
     """

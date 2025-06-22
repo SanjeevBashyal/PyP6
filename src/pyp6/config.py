@@ -4,7 +4,8 @@ from pathlib import Path
 
 # --- Paths ---
 # BASE_DIR allows for creating paths relative to this config file's location.
-BASE_DIR = Path(__file__).resolve().parent
+# BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(r"E:\0 Python\P6-py Scripts")
 
 # Full path to the P6 SQLite database file.
 P6_PRO_DB_PATH = r"C:\Users\Ripple\OneDrive - Tribhuvan University\1 UTHP\1 PMC\2 Construction Programme\Database\uthp.db"

@@ -6,9 +6,9 @@ import pandas as pd
 from datetime import datetime
 
 # Import shared settings and functions
-import config as cfg
-from access_db import connect_to_db
-from access_p6 import generate_guid, get_next_id
+from pyp6 import config as cfg
+from pyp6.access_db import connect_to_db
+from pyp6.access_p6 import generate_guid, get_next_id
 
 def get_or_create_obs_id(cursor, index, obs_name, parent_obs_name, cache):
     """
