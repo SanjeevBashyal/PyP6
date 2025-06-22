@@ -1,11 +1,5 @@
 WBS Short Name,WBS Name,Parent WBS Name
-1,Pre-Commissioning and Dry Testing,Testing & Commissioning
-2,Wet Commissioning and System Tests,Testing & Commissioning
-3,Unit Commissioning,Testing & Commissioning
-1,Unit 1 Commissioning,Unit Commissioning
-2,Unit 2 Commissioning,Unit Commissioning
-3,Unit 3 Commissioning,Unit Commissioning
-4,Unit 4 Commissioning,Unit Commissioning
-5,Unit 5 Commissioning,Unit Commissioning
-4,Integrated Plant Performance & Reliability Test,Testing & Commissioning
-5,Final Documentation and Handover,Testing & Commissioning
+1,"Engineering, Procurement & Delivery",Construction of Hydromechanical Works (LOT-3)
+2,"Penstock Pipe Installation",Construction of Hydromechanical Works (LOT-3)
+3,"Gates & Hoists Installation",Construction of Hydromechanical Works (LOT-3)
+4,"Final Works and Commissioning",Construction of Hydromechanical Works (LOT-3)
