@@ -1,14 +1,3 @@
-Of course. Here is the complete `README.md` file, updated with your name, email, and a placeholder for your GitHub repository link.
-
-I've added a new "Author" section and made the link in the "Contributing" section explicit.
-
-**Action Required:** Remember to replace the placeholder `https://github.com/your-username/pyp6` with the actual URL to your GitHub repository once you create it.
-
----
-
-### `README.md`
-
-```markdown
 # PyP6: Python for Primavera P6
 
 [![PyPI version](https://badge.fury.io/py/pyp6.svg)](https://badge.fury.io/py/pyp6)
