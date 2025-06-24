@@ -8,9 +8,10 @@ import time
 import re
 
 # Import shared settings and functions
-from pyp6 import config as cfg
+# from pyp6 import config as cfg
 from pyp6.access_db import connect_to_db
 from pyp6.access_p6 import get_project_defaults, generate_guid, get_next_id
+from pyp6.utils import load_config
 
 # --- Helper Functions ---
 
@@ -49,7 +50,7 @@ def build_task_code_map(cursor, proj_id):
     return task_map
 
 
-def parse_relationship(relationship_str):
+def parse_relationship(relationship_str, cfg):
     """Parses a relationship string like 'A1000[SS+5d]' into components."""
     pred_type = "FS"
     lag_hours = 0.0
@@ -80,6 +81,7 @@ def parse_relationship(relationship_str):
 
 
 def main():
+    cfg = load_config()
     """Main function to read CSV and add activities under specific WBS with relationships."""
     try:
         df = pd.read_csv(cfg.ACT_FILE_PATH).fillna("")
@@ -203,7 +205,7 @@ def main():
             predecessor_list = [p.strip() for p in predecessors_str.split(",")]
             for pred_str in predecessor_list:
                 try:
-                    pred_code, pred_type, lag_hours = parse_relationship(pred_str)
+                    pred_code, pred_type, lag_hours = parse_relationship(pred_str, cfg)
 
                     # This lookup now works for pre-existing AND newly created activities.
                     predecessor_task_id = activity_id_to_task_id.get(pred_code)

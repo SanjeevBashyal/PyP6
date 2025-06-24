@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyp6"
-version = "0.1.3"
+version = "0.1.4"
 authors = [
   { name="Sanjeev Bashyal", email="sanjeev.bashyal@gmail.com" },
 ]
@@ -31,6 +31,7 @@ dependencies = [
 
 # This section makes your scripts available as command-line tools
 [project.scripts]
+pyp6-init       = "pyp6.scripts.init:main"
 pyp6-activities = "pyp6.scripts.activities:main"
 pyp6-obs        = "pyp6.scripts.obs:main"
 pyp6-wbs        = "pyp6.scripts.wbs:main"

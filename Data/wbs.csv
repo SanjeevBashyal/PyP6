@@ -1,5 +1,15 @@
 WBS Short Name,WBS Name,Parent WBS Name
-1,"Engineering, Procurement & Delivery",Construction of Hydromechanical Works (LOT-3)
-2,"Penstock Pipe Installation",Construction of Hydromechanical Works (LOT-3)
-3,"Gates & Hoists Installation",Construction of Hydromechanical Works (LOT-3)
-4,"Final Works and Commissioning",Construction of Hydromechanical Works (LOT-3)
+P1,Phase 1: Project Inception and Scoping,
+1,Define Study Scope and Spatial Units,Phase 1: Project Inception and Scoping
+2,WEF System Mapping,Phase 1: Project Inception and Scoping
+3,Data Compilation and Preprocessing,Phase 1: Project Inception and Scoping
+P2,Phase 2: Integrated Modeling and Calibration,
+1,Climate Scenario Development,Phase 2: Integrated Modeling and Calibration
+2,SWAT Model Calibration and Hydrological Simulation,Phase 2: Integrated Modeling and Calibration
+3,WEAP Integrated Water Resources Simulation,Phase 2: Integrated Modeling and Calibration
+4,Agricultural Productivity Modeling (DSSAT),Phase 2: Integrated Modeling and Calibration
+P3,Phase 3: Optimization and Scenario Analysis,
+1,Hydro-Economic Optimization (GAMS),Phase 3: Optimization and Scenario Analysis
+2,Scenario Analysis,Phase 3: Optimization and Scenario Analysis
+P4,Phase 4: Reporting and Dissemination,
+1,Deliverables and Reporting,Phase 4: Reporting and Dissemination

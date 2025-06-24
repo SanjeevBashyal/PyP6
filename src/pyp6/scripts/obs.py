@@ -6,11 +6,12 @@ import pandas as pd
 from datetime import datetime
 
 # Import shared settings and functions
-from pyp6 import config as cfg
+# from pyp6 import config as cfg
 from pyp6.access_db import connect_to_db
 from pyp6.access_p6 import generate_guid, get_next_id
+from pyp6.utils import load_config
 
-def get_or_create_obs_id(cursor, index, obs_name, parent_obs_name, cache):
+def get_or_create_obs_id(cursor, index, obs_name, parent_obs_name, cache, cfg):
     """
     Finds an OBS element by name or creates it if it doesn't exist,
     now including a programmatically generated sequence number.
@@ -35,7 +36,7 @@ def get_or_create_obs_id(cursor, index, obs_name, parent_obs_name, cache):
     print(f"OBS element '{obs_name}' not found. Attempting to create.")
     # The parent doesn't need an index since we are creating it recursively.
     # Pass a placeholder index like -1.
-    parent_obs_id = get_or_create_obs_id(cursor, -1, parent_obs_name, None, cache)
+    parent_obs_id = get_or_create_obs_id(cursor, -1, parent_obs_name, None, cache, cfg)
 
     # 4. Insert the new OBS element with the sequence number
     try:
@@ -68,6 +69,7 @@ def get_or_create_obs_id(cursor, index, obs_name, parent_obs_name, cache):
 
 def main():
     """Main function to read CSV and populate the OBS table."""
+    cfg = load_config()
     try:
         df = pd.read_csv(cfg.OBS_FILE_PATH).fillna('')
         if not all(col in df.columns for col in ['OBS_Name', 'Parent_OBS_Name']):
@@ -88,7 +90,7 @@ def main():
         print("\n--- Processing OBS Hierarchy ---")
         # The 'index' from iterrows() is now used to generate the sequence number
         for index, row in df.iterrows():
-            get_or_create_obs_id(cursor, index, row['OBS_Name'], row['Parent_OBS_Name'], obs_cache)
+            get_or_create_obs_id(cursor, index, row['OBS_Name'], row['Parent_OBS_Name'], obs_cache, cfg)
 
         conn.commit()
         print("\nSUCCESS: OBS hierarchy changes have been committed to the database.")

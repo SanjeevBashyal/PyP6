@@ -7,8 +7,9 @@ from datetime import datetime
 import time
 
 # Import shared settings and functions
-from pyp6 import config as cfg
+# from pyp6 import config as cfg
 from pyp6.access_db import connect_to_db
+from pyp6.utils import load_config
 
 def generate_guid():
     """Generates a simple, unique-enough string for the GUID field."""
@@ -20,7 +21,7 @@ def get_next_id(cursor, table_name, id_column):
     max_id = cursor.fetchone()[0]
     return (max_id or 0) + 1
 
-def get_or_create_role_id(cursor, role_name, short_name, parent_role_name, cache):
+def get_or_create_role_id(cursor, role_name, short_name, parent_role_name, cache, cfg):
     """
     Finds a Role by name or creates it if it doesn't exist.
     """
@@ -39,7 +40,7 @@ def get_or_create_role_id(cursor, role_name, short_name, parent_role_name, cache
         return role_id
 
     print(f"Role '{role_name}' not found. Attempting to create.")
-    parent_role_id = get_or_create_role_id(cursor, parent_role_name, "", "", cache)
+    parent_role_id = get_or_create_role_id(cursor, parent_role_name, "", "", cache, cfg)
 
     try:
         sql_insert = """
@@ -62,6 +63,7 @@ def get_or_create_role_id(cursor, role_name, short_name, parent_role_name, cache
         raise
 
 def main():
+    cfg = load_config()
     try:
         df = pd.read_csv(cfg.ROLES_FILE_PATH).fillna('')
         if not all(col in df.columns for col in ['Role_Name', 'Role_Short_Name', 'Parent_Role_Name']):
@@ -81,7 +83,7 @@ def main():
     try:
         print("\n--- Processing Roles Hierarchy ---")
         for index, row in df.iterrows():
-            get_or_create_role_id(cursor, row['Role_Name'], row['Role_Short_Name'], row['Parent_Role_Name'], role_cache)
+            get_or_create_role_id(cursor, row['Role_Name'], row['Role_Short_Name'], row['Parent_Role_Name'], role_cache, cfg)
 
         conn.commit()
         print("\nSUCCESS: Roles hierarchy changes have been committed to the database.")

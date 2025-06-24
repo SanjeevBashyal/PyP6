@@ -6,11 +6,12 @@ import pandas as pd
 from datetime import datetime
 
 # Import shared settings and functions
-from pyp6 import config as cfg
+# from pyp6 import config as cfg
+from pyp6.utils import load_config
 from pyp6.access_db import connect_to_db
 from pyp6.access_p6 import generate_guid, get_next_id, get_project_defaults
 
-def get_or_create_wbs_id(cursor, proj_id, root_wbs_id, row, index, default_obs_id, wbs_cache):
+def get_or_create_wbs_id(cursor, proj_id, root_wbs_id, row, index, default_obs_id, wbs_cache, cfg):
     """
     Finds a WBS element by name or creates it with programmatically-defined details.
     """
@@ -77,6 +78,7 @@ def get_or_create_wbs_id(cursor, proj_id, root_wbs_id, row, index, default_obs_i
         raise
 
 def main():
+    cfg = load_config()
     try:
         # NOTE: Make sure config.py's WBS_FILE_PATH points to your simple CSV
         df = pd.read_csv(cfg.WBS_FILE_PATH).fillna('')
@@ -103,7 +105,7 @@ def main():
         print("\n--- Processing WBS Hierarchy from Simple CSV ---")
         # Use iterrows() to get an index for the sequence number
         for index, row in df.iterrows():
-            get_or_create_wbs_id(cursor, proj_id, root_wbs_id, row, index, default_obs_id, wbs_cache)
+            get_or_create_wbs_id(cursor, proj_id, root_wbs_id, row, index, default_obs_id, wbs_cache, cfg)
 
         conn.commit()
         print("\nSUCCESS: WBS hierarchy changes have been committed with detailed, default data.")
