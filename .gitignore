@@ -1,5 +1,7 @@
 # --- START OF FILE .gitignore ---
 
+SheetScheduling/credentials-pyp6.json
+
 # Python
 __pycache__/
 *.pyc
